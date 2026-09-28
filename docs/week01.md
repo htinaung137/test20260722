@@ -17,10 +17,8 @@
 ## Step 1: Repositoryをclone
 
 ```bash
-git clone <REPOSITORY_URL>
+git clone https://github.com/daigo-takeuchi/programming-lab-maze.git
 ```
-
-`<REPOSITORY_URL>` は授業で案内されるURLに置き換えてください。
 
 ## Step 2: Repositoryへ移動
 
