@@ -27,6 +27,15 @@ start_y = 1
 goal_x = 13
 goal_y = 7
 
+class Player:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def move(self, maze, command):
+        self.x, self.y = move_player(
+            maze, self.x, self.y, command
+        )
 
 def show_maze(maze, player_x, player_y, goal_x, goal_y):
     print()
@@ -81,14 +90,14 @@ def read_command():
 
 
 def main():
-    player_x = start_x
-    player_y = start_y
+    player = Player(start_x, start_y)
 
     print("Welcome to the Maze!")
     print("Move the player (P) to the goal (G).")
 
     while True:
-        show_maze(maze, player_x, player_y, goal_x, goal_y)
+        show_maze(maze, player.x, player.y, goal_x, goal_y)
+
         command = read_command()
 
         if command == "Q":
@@ -99,10 +108,10 @@ def main():
             print("Use W/A/S/D to move, or Q to quit.")
             continue
 
-        player_x, player_y = move_player(maze, player_x, player_y, command)
+        player.move(maze, command)
 
-        if is_goal(player_x, player_y, goal_x, goal_y):
-            show_maze(maze, player_x, player_y, goal_x, goal_y)
+        if is_goal(player.x, player.y, goal_x, goal_y):
+            show_maze(maze, player.x, player.y, goal_x, goal_y)
             print("Goal reached!")
             break
 
